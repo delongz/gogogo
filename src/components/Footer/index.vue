@@ -1,7 +1,6 @@
 <template>
-  <div>
     <!-- 底部 -->
-    <div class="footer">
+    <div class="footer" v-show="$route.meta.show">
       <div class="footer-container">
         <div class="footerList">
           <div class="footerItem">
@@ -104,7 +103,6 @@
         </div>
       </div>
     </div>
-  </div>
 </template>
 
 <script>

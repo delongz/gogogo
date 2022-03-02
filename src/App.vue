@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <IsHeader></IsHeader>
-     <h2>路由模块</h2>
+     <h2>
+       <router-view></router-view>
+     </h2>
     <IsFooter></IsFooter>
   </div>
 </template>
