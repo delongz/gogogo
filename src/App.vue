@@ -1,9 +1,7 @@
 <template>
   <div id="app">
     <IsHeader></IsHeader>
-     <h2>
-       <router-view></router-view>
-     </h2>
+    <router-view></router-view>
     <IsFooter></IsFooter>
   </div>
 </template>
@@ -17,6 +15,10 @@ export default {
   components: {
       IsHeader,
       IsFooter
+  },
+  mounted(){
+     // 派发一个action||获取商品分类三级列表的数据
+    this.$store.dispatch('categoryList')
   }
 }
 </script>

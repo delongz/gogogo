@@ -6,13 +6,14 @@
     <TodayRecommend/>
     <HotRank/>
     <YourLike/>
-    <EveryFloors/>
-    <EveryFloors/>
+    <EveryFloors v-for="(floor,index) in floorsList" :key="floor.id" :list="floor"/>
     <IsBrand/>
   </div>
 </template>
 
 <script>
+import {mapState} from 'vuex'
+
 import ListContainer from '@/pages/Home/ListContainer'
 import TodayRecommend from '@/pages/Home/TodayRecommend'
 import HotRank from '@/pages/Home/HotRank'
@@ -29,9 +30,13 @@ export default {
       EveryFloors,
       IsBrand
     },
+    mounted(){
+      this.$store.dispatch('getFloorsList')
+    },
+    computed:{
+      ...mapState({
+        floorsList: state => state.home.floorsList
+      })
+    }
 }
 </script>
-
-<style>
-
-</style>

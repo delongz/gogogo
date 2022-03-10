@@ -40,13 +40,13 @@
               id="autocomplete"
               class="input-error input-xxlarge"
               v-model="keyword"
+              @keyup.enter="goSearch"
             />
             <!-- 编程式导航 -->
             <button 
             class="sui-btn btn-xlarge btn-danger" 
             type="button"
-             @click="goSearch"
-             >
+             @click="goSearch">
               搜索
             </button>
           </form>
@@ -73,8 +73,14 @@ export default {
         // 模板字符串写法
         // this.$router.push(`/search/${this.keyword}?k=${this.keyword.toUpperCase()}`)
         // 对象写法
-        this.$router.push({name:'search',params:{keyword:this.keyword},query:{k:this.keyword.toUpperCase()}},()=>{},()=>{})
+          this.$router.push({name:'search',params:{keyword:this.keyword}})
       }
+    },
+    mounted(){
+      // 通过全局事件总线清除keyword
+      this.$bus.$on('clear',()=>{
+        this.keyword = ''
+      })
     }
 };
 </script>
