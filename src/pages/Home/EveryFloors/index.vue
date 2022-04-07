@@ -78,7 +78,7 @@ export default {
     .title {
       .fl {
         float: left;
-        color: #c81623;
+        color: rgb(54, 66, 234);
         font-size: 20px;
         line-height: 30px;
         margin: 9px 0;
@@ -100,7 +100,7 @@ export default {
               padding-top: 1px;
               font-weight: 400;
               background-color: #fff;
-
+              text-decoration: none;
               &::after {
                 content: "|";
                 padding: 0 10px;
@@ -117,7 +117,7 @@ export default {
 
             &.active {
               a {
-                color: #e1251b;
+                color: rgb(54, 126, 234);
               }
             }
           }
@@ -126,7 +126,7 @@ export default {
     }
 
     .tab-content {
-      border-top: 2px solid #c81623;
+      border-top: 2px solid rgb(54, 66, 234);
       border-bottom: 1px solid #e4e4e4;
 
       .tab-pane {

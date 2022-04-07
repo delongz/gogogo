@@ -35,7 +35,10 @@
             this.$nextTick(() => {
             new Swiper(this.$refs.cur, {
                 loop: true, // 循环模式选项
-                autoplay: true,
+                autoplay: {
+                  // 触碰后会再次自动轮播
+                 disableOnInteraction: false
+                 },
                 // 如果需要分页器
                 pagination: {
                 el: ".swiper-pagination",

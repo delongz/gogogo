@@ -31,6 +31,7 @@ export default {
       IsBrand
     },
     mounted(){
+      // 获取楼梯商品的信息列表
       this.$store.dispatch('getFloorsList')
     },
     computed:{

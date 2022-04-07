@@ -7,7 +7,7 @@
       <!-- 三级联动 -->
       <!-- 过渡动画 -->
      <transition name="sort">
-         <div class="sort" v-show="show">
+      <div class="sort" v-show="show">
          <!-- 使用编程式跳转+事件委派 -->
         <div class="all-sort-list2" @click="goSearch">
           <!-- 一级分类 -->
@@ -41,7 +41,7 @@
       <nav class="nav">
         <a href="###">服装城</a>
         <a href="###">美妆馆</a>
-        <a href="###">尚品汇超市</a>
+        <a href="###">go超市</a>
         <a href="###">全球购</a>
         <a href="###">闪购</a>
         <a href="###">团购</a>
@@ -56,7 +56,6 @@
 <script>
 import {mapState} from 'vuex'
 import throttle from 'lodash/throttle'
-// import search from '@/store/search';
 export default {
   name: "TypeNav",
   data(){
@@ -128,7 +127,10 @@ export default {
 
 <style lang="less">
 .type-nav {
-  border-bottom: 2px solid #e1251b;
+  border-bottom: 2px solid rgb(54, 66, 234);
+  h2,a{
+    cursor: pointer;
+  }
 
   .container {
     width: 1200px;
@@ -139,7 +141,7 @@ export default {
     .all {
       width: 210px;
       height: 45px;
-      background-color: #e1251b;
+      background-color: rgb(54, 66, 234);
       line-height: 45px;
       text-align: center;
       color: #fff;
@@ -155,6 +157,7 @@ export default {
         font-size: 16px;
         color: #333;
         text-decoration: none;
+        cursor: pointer;
       }
     }
 

@@ -49,7 +49,10 @@
                     >综合<span
                       v-show="isOne"
                       class="iconfont"
-                      :class="{'icon-jiantouxia':isDown,'icon-jiantoushang':isUp}"
+                      :class="{
+                        'icon-jiantouxia': isDown,
+                        'icon-jiantoushang': isUp,
+                      }"
                     ></span
                   ></a>
                 </li>
@@ -58,7 +61,10 @@
                     >价格<span
                       v-show="isTwo"
                       class="iconfont"
-                      :class="{'icon-jiantouxia':isDown,'icon-jiantoushang':isUp}"
+                      :class="{
+                        'icon-jiantouxia': isDown,
+                        'icon-jiantoushang': isUp,
+                      }"
                     ></span
                   ></a>
                 </li>
@@ -70,9 +76,9 @@
               <li class="yui3-u-1-5" v-for="goods in goodsList" :key="goods.id">
                 <div class="list-wrap">
                   <div class="p-img">
-                    <a href="item.html" target="_blank"
-                      ><img :src="goods.defaultImg"
-                    /></a>
+                    <router-link :to="`/detail/${goods.id}`">
+                      <img v-lazy="goods.defaultImg" />
+                    </router-link>
                   </div>
                   <div class="price">
                     <strong>
@@ -104,7 +110,13 @@
             </ul>
           </div>
           <!-- 测试分页器 -->
-          <IsPagination :pageNo="searchParams.pageNo" :pageSize="searchParams.pageSize" :total="totals" :continues="5" @getPageNo="getPageNo"/>
+          <IsPagination
+            :pageNo="searchParams.pageNo"
+            :pageSize="searchParams.pageSize"
+            :total="totals"
+            :continues="5"
+            @getPageNo="getPageNo"
+          />
         </div>
       </div>
     </div>
@@ -154,7 +166,7 @@ export default {
     this.getData();
   },
   computed: {
-    ...mapGetters(["goodsList",'totals']),
+    ...mapGetters(["goodsList", "totals"]),
     // 计算是否升降序
     isOne() {
       return this.searchParams.order.indexOf("1") != -1;
@@ -188,7 +200,7 @@ export default {
       this.getData();
       // 地址栏也需要重新修改
       if (this.$route.params) {
-        this.$router.push({ name: "search", params: this.$routeparams });
+        this.$router.push({ name: "search", params: this.$route.params });
       }
     },
     // 删除搜索框面包屑的内容
@@ -235,24 +247,24 @@ export default {
       this.getData();
     },
     // 改变排序,flag形参代表传入的值
-    changeOrder(flag){
-      let originOrder = this.searchParams.order
-      let changeFlag = originOrder.split(':')[0]
-      let changeSolt = originOrder.split(':')[1]
-      let newOrder = ''
-      if(flag == changeFlag){
-        newOrder = `${changeFlag}:${changeSolt=='desc'?'asc':'desc'}`
-      } else{
-        newOrder = `${flag}:${'desc'}`
+    changeOrder(flag) {
+      let originOrder = this.searchParams.order;
+      let changeFlag = originOrder.split(":")[0];
+      let changeSolt = originOrder.split(":")[1];
+      let newOrder = "";
+      if (flag == changeFlag) {
+        newOrder = `${changeFlag}:${changeSolt == "desc" ? "asc" : "desc"}`;
+      } else {
+        newOrder = `${flag}:${"desc"}`;
       }
-      this.searchParams.order = newOrder
-       this.getData()
+      this.searchParams.order = newOrder;
+      this.getData();
     },
     // 自定义事件--获取当前页面
-    getPageNo(pageNo){
-      this.searchParams.pageNo = pageNo
-      this.getData()
-    }
+    getPageNo(pageNo) {
+      this.searchParams.pageNo = pageNo;
+      this.getData();
+    },
   },
   // 监听搜索的变化
   watch: {
@@ -380,7 +392,7 @@ export default {
 
               &.active {
                 a {
-                  background: #e1251b;
+                  background: rgb(76, 136, 226);
                   color: #fff;
                 }
               }
@@ -422,7 +434,7 @@ export default {
               .price {
                 padding-left: 15px;
                 font-size: 18px;
-                color: #c81623;
+                color: rgb(54, 72, 230);
 
                 strong {
                   font-weight: 700;
@@ -496,12 +508,12 @@ export default {
                 }
 
                 .btn-danger {
-                  border: 1px solid #e1251b;
-                  color: #e1251b;
+                  border: 1px solid rgb(54, 66, 234);
+                  color: rgb(54, 66, 234);
 
                   &:hover {
-                    border: 1px solid #e1251b;
-                    background-color: #e1251b;
+                    border: 1px solid rgb(54, 66, 234);
+                    background-color: rgb(54, 66, 234);
                     color: white !important;
                     text-decoration: none;
                   }
@@ -548,7 +560,7 @@ export default {
               &.active {
                 a {
                   background-color: #fff;
-                  color: #e1251b;
+                  color: rgb(54, 66, 234);
                   border-color: #fff;
                   cursor: default;
                 }
